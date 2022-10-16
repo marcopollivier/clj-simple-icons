@@ -1,6 +1,22 @@
-(ns clj-simple-icons.core)
+(ns clj-simple-icons.core
+  (:require [schema.core :as s]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
+(s/defschema License
+  {:type s/Str
+   :url  s/Str})
+
+(s/defschema Icon
+  {:slug       s/Str
+   :hex        s/Str
+   :source     s/Str
+   :svg        s/Str
+   :path       s/Str
+   :guidelines s/Str
+   :license    License})
+
+(s/defschema Icons
+  {:icons [Icon]})
+
+(s/defn foo
+  [x :- Icons]
   (println x "Hello, World!"))
